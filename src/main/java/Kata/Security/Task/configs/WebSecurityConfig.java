@@ -23,15 +23,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admins/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER","ADMIN")
-                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .successHandler(successUserHandler)
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+                    .and()
+                .formLogin().successHandler(successUserHandler).permitAll()
+                    .and()
+                .logout().permitAll();
     }
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

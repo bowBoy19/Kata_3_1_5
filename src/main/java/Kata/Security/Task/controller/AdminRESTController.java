@@ -31,7 +31,6 @@ public class AdminRESTController {
         for (User user : userService.getAllUsers()) {
             userList.add(user);
         }
-
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
